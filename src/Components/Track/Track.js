@@ -19,7 +19,7 @@ class Track extends React.Component{
         return(
             <div className="Track">
                 <div className="Track-information">
-                    <h3></h3>
+                    <h3>{this.props.track.name}</h3>
                     <p></p>
                 </div>
                 <button className="Track-action" onClick ={this.addTrack}> + </button>
