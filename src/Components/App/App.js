@@ -23,8 +23,7 @@ class App extends React.Component {
         artist= '',
         album= ''
       ],
-      playlistName: ''
-
+      playlistName: 'New Playlist'
     }
 
     this.addTrack = this.addTrack.bind(this);
@@ -54,7 +53,7 @@ class App extends React.Component {
 
   savePlaylist(){
     const trackURIs = this.props.PlaylistTracks.map( track => track=track);
-
+    Spotify.savePlaylist(playlistName, trackURIs);
   }
   
   search(term){
