@@ -7,9 +7,10 @@ const acc_token= '';
 const exp_in = '';
 
 const Spotify = {
+    acc_token :'',
     getAccessToken(){  
         if(acc_token != ''){
-           return acc_token;        
+           return this.acc_token;        
         }else{
             fetch(url_req_auth).then( codeResponse =>{
                 if(codeResponse.ok){
@@ -21,7 +22,7 @@ const Spotify = {
                //get access token & time expiration from codeResponse;
                 const reg_accToken = new RegExp(access_token+'=([^&]*)','i');
                 const reg_expiTime = new RegExp(expires_in+'=([^&]*)', 'j');
-                acc_token = reg_accToken.exec(window.location.href);
+                this.acc_token = reg_accToken.exec(window.location.href);
                 exp_in =  reg_expiTime.exec(window.location.href);
     
                 window.setTimeout( ()=> accesstoken = access_token, exp_in*1000);
@@ -29,13 +30,14 @@ const Spotify = {
                 window.location.href(redirect_uri);
     
             });
+            return acc_token;    
         };
-    }
-    search( term){
+    },
+
+    search(term){   
         
-        return null;    
     }
-    
+
 };
 
 export default Spotify;
