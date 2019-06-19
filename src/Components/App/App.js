@@ -2,6 +2,8 @@ import React from 'react';
 import SearchBar from '../SearchBar/SearchBar';
 import SearchResults from '../SearchResults/SearchResults';
 import Playlist from '../Playlist/Playlist';
+import Spotify from '../../util/Spotify';
+
 //import logo from './logo.svg';
 import './App.css';
 
@@ -56,7 +58,8 @@ class App extends React.Component {
   }
   
   search(term){
-    console.log(term);
+    //console.log(term);
+    Spotify.search(term);
   }
 
   render() {

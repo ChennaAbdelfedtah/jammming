@@ -35,7 +35,25 @@ const Spotify = {
     },
 
     search(term){   
-        
+        const arryTracks = [];
+        fetch('https://api.spotify.com/v1/search?type=track&q=term',{headers:{Authorization: `Bearer ${acc_token}`}}).then(response => {
+            if(response.ok){
+                return arryTracks = response.json();
+            }
+            throw new Error('Request failed!');
+        }, networkError => console.log(networkError.message)
+        ).then(jsonRespone => {
+            arryTracks.map(track =>{
+                Id= track.Id,
+                Name= track.Name,
+                Artist= track.Artist[0].name,
+                Album=track.Album,
+                URI = track.URI
+            })
+        });
+
+        return null;
+
     }
 
 };
