@@ -1,38 +1,41 @@
 import React from 'react';
-import './Track';
 
-class Track extends React.Component{
-    constructor(props){
-        super(props);
-        this.addTrack = this.addTrack.bind(this);
-        this.onRemove = this.onRemove.bind(this);
-    }
+import './Track.css';
 
-    addTrack(){
-        this.props.onAdd(this.props.Track);
-    }
+class Track extends React.Component {
+  constructor(props) {
+    super(props);
 
-    removeTrack(){
-        this.props.onRemove(this.props.Track);
-    }
-    render(){
-        return(
-            <div className="Track">
-                <div className="Track-information">
-                    <h3>{this.props.track.name}</h3>
-                    <p>{this.props.track.artist} | {this.props.track.album} </p>
-                </div>
+    this.addTrack = this.addTrack.bind(this);
+    this.removeTrack = this.removeTrack.bind(this);
+  }
 
-                <div className="Track-action">        
-                        if (this.props.isRemoval) {
-                            <button className="Track-action" onClick ={this.onRemove}> - </button>
-                        } else{
-                            <button className="Track-action" onClick ={this.addTrack}> + </button>
-                        }                   
-                </div>   
-            </div>
-        );
+  addTrack(event) {
+    this.props.onAdd(this.props.track);
+  }
+
+  removeTrack(event) {
+    this.props.onRemove(this.props.track);
+  }
+
+  renderAction() {
+    if (this.props.isRemoval) {
+      return <button className="Track-action" onClick={this.removeTrack}>-</button>
     }
+    return <button className="Track-action" onClick={this.addTrack}>+</button>;
+  }
+
+  render() {
+    return (
+      <div className="Track">
+        <div className="Track-information">
+          <h3>{this.props.track.name}</h3>
+          <p>{this.props.track.artist} | {this.props.track.album}</p>
+        </div>
+        {this.renderAction()}
+      </div>
+    );
+  }
 }
 
 export default Track;
