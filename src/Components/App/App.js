@@ -10,11 +10,12 @@ import './App.css';
 class App extends React.Component {
   constructor(props) {
     super(props);
+
     this.state = {
-      SearchResults: [],
-      PlaylistTracks: [],
+      searchResults: [],
+      playlistTracks: [],
       playlistName: 'New Playlist'
-    }
+    };
 
     this.addTrack = this.addTrack.bind(this);
     this.removeTrack = this.removeTrack.bind(this);
@@ -62,18 +63,17 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="App">
+      <div>
         <h1>Ja<span className="highlight">mmm</span>ing</h1>
         <div className="App">
           <SearchBar onSearch={this.search} />
           <div className="App-playlist">
-            <SearchResults searchResults={this.state.SearchResults}
-              onAdd={this.addTrack} />
-
+            <SearchResults searchResults={this.state.searchResults}
+                           onAdd={this.addTrack} />
             <Playlist playlistTracks={this.state.playlistTracks}
-              onRemove={this.removeTrack}
-              onNameChange={this.updatePlaylistName}
-              onSave={this.savePlaylist} />
+                      onNameChange={this.updatePlaylistName}
+                      onRemove={this.removeTrack}
+                      onSave={this.savePlaylist} />
           </div>
         </div>
       </div>
