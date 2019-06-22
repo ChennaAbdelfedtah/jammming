@@ -5,7 +5,7 @@ import Playlist from '../Playlist/Playlist';
 import Spotify from '../../util/Spotify';
 
 //import logo from './logo.svg';
-import './App.css';
+import './App';
 
 class App extends React.Component {
   constructor(props) {
